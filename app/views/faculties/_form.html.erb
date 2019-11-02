@@ -1,12 +1,4 @@
-<% if @faculty.errors.any?%>
-<h2>The following errors prevented the faculty from getting created : </h2>
-<ul>
-  <% @faculty.errors.full_messages.each do |msg|%>
-      <li><%= msg%></li>
-  <% end %>
-</ul>
-
-<% end %>
+<%= render 'shared/errors', obj: @faculty %>
 
 <%= form_for @faculty do |f| %>
   <p>
@@ -40,9 +32,14 @@
 
   <p>
     <%= f.label :email%>
-    <%= f.text_field :email%>
+    <%= f.email_field :email%>
   </p>
 
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  
   <p>
     <%= f.submit %>
   </p>

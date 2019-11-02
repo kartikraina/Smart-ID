@@ -1,12 +1,6 @@
-<h1> Showing Selected Faculty</h1>
+<h1><%= @faculty.lastname.nil? ? @faculty.firstname : @faculty.firstname + " " + @faculty.lastname %>'s Profile</h1>
 
-<p>
-  Firstname: <%= @faculty.firstname%>
-</p>
-
-<p>
-  Last Name: <%= @faculty.lastname%>
-</p>
+<p><%= gravatar_for @faculty, size: 150 %></p>
 
 <p>
   Specialization: <%= @faculty.teaching_field%>
@@ -24,4 +18,4 @@
   Contact: <%= @faculty.contact%>
 </p>
 
-<%= link_to "Edit this Faculty", edit_faculty_path(@faculty)%> | <%= link_to "Back To Faculties listing", faculties_path%>
+<%= link_to "Edit this Faculty", edit_faculty_path(@faculty)%> | <%= link_to "Back To Faculties listing", faculties_path%> | <%= link_to "Delete", faculty_path(@faculty), method: :delete, data: {confirm: "Are you sure?"}%>
